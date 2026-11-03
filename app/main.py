@@ -2,8 +2,9 @@ import sys
 
 
 def main():
-    command = input("$ ")
-    print(f"{command}: command not found")
+    while True:
+        command = input("$ ")
+        print(f"{command}: command not found")
     
 
 
