@@ -20,7 +20,7 @@ def main():
                     candidate = os.path.join(directory, command[5:])
                     if os.path.isfile(candidate) and os.access(candidate, os.X_OK):
                         executable = True
-                        print(command[5:], " is ", candidate)
+                        print(command[5:], "is", candidate)
                         break
                 if executable == False:
                     print(f"{command[5:]}: not found")
