@@ -1,5 +1,7 @@
+from re import sub
 import sys
 import os
+import subprocess
 
 
 def main():
@@ -25,7 +27,19 @@ def main():
                 if executable == False:
                     print(f"{command[5:]}: not found")
         else:
-            print(f"{command}: command not found")
+            path = os.environ.get("PATH", "")
+            executable = False
+            for directory in path.split(os.pathsep):
+                candidate = os.path.join(directory, command_list[0])
+                if os.path.isfile(candidate) and os.access(candidate, os.X_OK):
+                    executable = True
+                    break
+            if executable == True:
+                output = subprocess.run(command_list, capture_output=True, text=True)
+                print(output.stdout)
+            
+            else:
+                print(f"{command}: command not found")
     
 
 
