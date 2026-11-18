@@ -28,17 +28,6 @@ def main():
                     print(f"{command[5:]} is {executable} ")
                 else:
                     print(f"{command[5:]}: not found")
-
-                # path = os.environ.get("PATH", "")
-                # executable = False
-                # for directory in path.split(os.pathsep):
-                #     candidate = os.path.join(directory, command[5:])
-                #     if os.path.isfile(candidate) and os.access(candidate, os.X_OK):
-                #         executable = True
-                #         print(command[5:], "is", candidate)
-                #         break
-                # if executable == False:
-                #     print(f"{command[5:]}: not found")
         else:
             executable = find_executable(command_list[0])
             if executable:
@@ -46,21 +35,7 @@ def main():
                 print(output.stdout, end = "")
             else:
                 print(f"{command}: command not found")
-            # path = os.environ.get("PATH", "")
-            # executable = False
-            # for directory in path.split(os.pathsep):
-            #     candidate = os.path.join(directory, command_list[0])
-            #     if os.path.isfile(candidate) and os.access(candidate, os.X_OK):
-            #         executable = True
-            #         break
-            # if executable == True:
-            #     output = subprocess.run(command_list, capture_output=True, text=True)
-            #     print(output.stdout, end = "")
             
-            # else:
-            #     print(f"{command}: command not found")
-    
-
 
 if __name__ == "__main__":
     main()
