@@ -22,7 +22,7 @@ def main():
         elif command_list[0] == "pwd":
             print(os.getcwd())
         elif command_list[0] == "type":
-            if command[5:] in ["echo", "exit", "type"]:
+            if command[5:] in ["echo", "exit", "type", "pwd"]:
                 print(f"{command[5:]} is a shell builtin")
             else:
                 executable = find_executable(command[5:])
