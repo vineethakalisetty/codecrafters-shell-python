@@ -36,7 +36,7 @@ def main():
                     break
             if executable == True:
                 output = subprocess.run(command_list, capture_output=True, text=True)
-                print(output.stdout)
+                print(output.stdout, end = "")
             
             else:
                 print(f"{command}: command not found")
