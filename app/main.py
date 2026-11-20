@@ -21,6 +21,11 @@ def main():
             print(" ".join(command_list[1:]))
         elif command_list[0] == "pwd":
             print(os.getcwd())
+        elif command_list[0] == "cd":
+            if os.path.isdir(command_list[1]):
+                os.chdir(command_list[1]) 
+            else:
+                print(f"{command_list[0]}: {command_list[1]}: No such file or directory")
         elif command_list[0] == "type":
             if command[5:] in ["echo", "exit", "type", "pwd"]:
                 print(f"{command[5:]} is a shell builtin")
