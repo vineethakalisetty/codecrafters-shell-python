@@ -22,8 +22,13 @@ def main():
         elif command_list[0] == "pwd":
             print(os.getcwd())
         elif command_list[0] == "cd":
-            if os.path.isdir(command_list[1]):
-                os.chdir(command_list[1]) 
+            path = command_list[1]
+            if path == "~":
+                path = os.getenv("HOME")
+            elif path.startswith("~/"):
+                path = os.path.join(os.getenv("HOME"), path[2:])
+            if os.path.isdir(path):
+                os.chdir(path) 
             else:
                 print(f"{command_list[0]}: {command_list[1]}: No such file or directory")
         elif command_list[0] == "type":
